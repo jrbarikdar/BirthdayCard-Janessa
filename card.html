@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printable Invitation - Janessa's 9th Birthday</title>
+    
+    <!-- Tailwind CSS with Custom Theme Configuration -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        katseye: {
+                            purple: '#4B0082',
+                            pink: '#FF1493',
+                            black: '#000000',
+                            silver: '#C0C0C0',
+                            heliotrope: '#AC86FF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Montserrat:wght@400;700;900&family=Permanent+Marker&display=swap');
+
+        :root {
+            --katseye-purple: #4B0082;
+            --katseye-pink: #FF1493;
+            --katseye-black: #000000;
+            --katseye-silver: #C0C0C0;
+            --katseye-heliotrope: #AC86FF;
+        }
+
+        @media print {
+            /* Suggests the exact paper size to the print dialog */
+            @page {
+                size: letter landscape;
+                margin: 0.5in;
+            }
+            body { 
+                background: white; 
+                padding: 0;
+                margin: 0;
+            }
+            .no-print { display: none !important; }
+            
+            .page-container {
+                gap: 0.2in;
+                max-width: 100%;
+                justify-content: center;
+                align-content: center;
+            }
+            
+            .card-wrapper {
+                box-shadow: none !important;
+            }
+
+            .card-container { 
+                border: 6pt solid var(--katseye-black) !important; 
+            }
+            
+            .logo-font {
+                background: none !important;
+                -webkit-text-fill-color: var(--katseye-purple) !important;
+                color: var(--katseye-purple) !important;
+            }
+        }
+
+        body {
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+        }
+
+        .page-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 10in;
+            justify-content: center;
+        }
+
+        .card-wrapper {
+            width: 4.5in;
+            height: 6.3in;
+            position: relative;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* 5x7 Card Proportion for Printing */
+        .card-container {
+            width: 5in;
+            height: 7in;
+            background: #ffffff;
+            border: 8px solid var(--katseye-black);
+            padding: 30px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(0.9);
+            transform-origin: top left;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            color: #000;
+            text-align: center;
+            border-radius: 2px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        /* Themed Static Decor (Optimized for Ink) */
+        .decor-layer {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .decor-item {
+            position: absolute;
+            opacity: 0.15;
+            color: var(--katseye-purple);
+        }
+
+        .logo-font {
+            font-family: 'Bungee Shade', cursive;
+            font-size: 3rem;
+            color: var(--katseye-purple);
+            /* Silver/Black "Glitter" look using gradient */
+            background: linear-gradient(45deg, #000000, #C0C0C0, #4B0082);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            letter-spacing: 2px;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--katseye-pink);
+            text-transform: uppercase;
+            font-size: 1rem;
+            margin-top: -5px;
+            z-index: 1;
+        }
+
+        .photo-area {
+            position: relative;
+            z-index: 1;
+        }
+
+        .group-photo-frame {
+            width: 100%;
+            height: 160px;
+            border: 3px solid var(--katseye-black);
+            margin: 10px 0;
+            background: #f9f9f9;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .group-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .star-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .birthday-photo-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--katseye-purple);
+            overflow: hidden;
+            background: #eee;
+            flex-shrink: 0;
+        }
+
+        .birthday-photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name-lockup {
+            text-align: left;
+        }
+
+        .name-lockup h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--katseye-purple);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .age-text {
+            color: var(--katseye-pink);
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.2rem;
+        }
+
+        .party-details {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            margin: 5px 0;
+        }
+
+        .venue-name {
+            font-weight: 900;
+            color: var(--katseye-purple);
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .highlight {
+            color: var(--katseye-pink);
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .rsvp-footer {
+            padding-top: 10px;
+            font-size: 0.8rem;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .print-btn {
+            margin-bottom: 20px;
+            background: var(--katseye-black);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.1s;
+        }
+        
+        .print-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn no-print" onclick="window.print()">Click to Print Card</button>
+
+    <div class="page-container" id="printable-area">
+        <div class="card-wrapper">
+            <div class="card-container">
+        <!-- Background Themed Decor (Symbols) -->
+        <div class="decor-layer" aria-hidden="true">
+            <svg class="decor-item" style="top:5%; left:5%; width:30px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            <svg class="decor-item" style="top:8%; right:5%; width:25px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+            <svg class="decor-item" style="bottom:25%; left:5%; width:35px;" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5 5 4-7 4 7 5-5-2 11H5z"/></svg>
+            <svg class="decor-item" style="top:45%; left:2%; width:25px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.1 0 2 .9 2 2v2.21c2.45.66 4.34 2.55 5 5h1c.55 0 1 .45 1 1v1c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1v-1c0-.55.45-1 1-1h1c.66-2.45 2.55-4.34 5-5V4c0-1.1.9-2 2-2z"/></svg>
+            <svg class="decor-item" style="bottom:5%; right:5%; width:30px;" viewBox="0 0 24 24" fill="currentColor"><path d="M11 2v3.07C7.05 5.56 4 8.92 4 13h2c0-3.31 2.69-6 6-6s6 2.69 6 6h2c0-4.08-3.05-7.44-7-7.93V2h-2zm1 19c-3.87 0-7-3.13-7-7H3c0 4.63 3.51 8.44 8 8.94V22h2v-1.06c4.49-.5 8-4.31 8-8.94h-2c0 3.87-3.13 7-7 7z"/></svg>
+        </div>
+
+        <header class="header">
+            <div class="logo-font">KATSEYE</div>
+            <div class="subtitle">KIDZ ROCKIN' BIRTHDAY PARTY</div>
+        </header>
+
+        <section class="photo-area">
+            <div class="group-photo-frame">
+                <!-- INSERT KATSEYE PHOTO LINK BELOW -->
+                <img src="https://www.katseye.world/wp-content/uploads/sites/2863/2024/06/06.25.Katseye_slide01-compressed.jpg" alt="Katseye music group">
+            </div>
+
+            <div class="star-section">
+                <div class="birthday-photo-placeholder">
+                    <!-- INSERT JANESSA PHOTO LINK BELOW -->
+                    <img src="IMG_20170715_114910.jpg" alt="Janessa the birthday girl">
+                </div>
+                <div class="name-lockup">
+                    <h1>JANESSA</h1>
+                    <div class="age-text">IS TURNING 9!</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="party-details">
+            <div class="venue-name">Urban Air Adventure Park</div>
+            <p class="text-[10px] text-gray-500 uppercase tracking-widest">396 Ryders Lane, Milltown, NJ 08850</p>
+            
+            <div class="mt-4 flex justify-around text-center">
+                <div>
+                    <p class="highlight">DATE</p>
+                    <p class="font-bold text-sm">Saturday, June 20</p>
+                </div>
+                <div>
+                    <p class="highlight">TIME</p>
+                    <p class="font-bold text-sm">3:30 PM - 6:00 PM</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="rsvp-footer">
+            RSVP With <span class="font-bold">Merle</span> BY <span class="font-bold">June 10, 2026</span><br>
+            <span class="text-katseye-pink font-black text-lg">347-722-2526</span>
+        </footer>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Automatically duplicate the card to fit 2 on a page for printing
+        window.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('printable-area');
+            const cardToClone = container.querySelector('.card-wrapper');
+            for(let i = 0; i < 1; i++) {
+                container.appendChild(cardToClone.cloneNode(true));
+            }
+        });
+    </script>
+
+</body>
+</html>
